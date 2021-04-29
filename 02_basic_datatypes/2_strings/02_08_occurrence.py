@@ -7,3 +7,12 @@ Letter input: o
 Result: 4
 
 '''
+
+# user input sentence
+sentence = input("Please enter a sentence: ")
+# user input letter
+letter = input("Please enter a letter: ")
+# position of letter
+position = sentence.find(letter)
+# print result
+print(position)
