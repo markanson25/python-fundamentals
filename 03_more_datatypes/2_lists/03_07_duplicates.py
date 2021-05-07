@@ -4,10 +4,12 @@ Write a script that removes all duplicates from a list.
 
 '''
 
-list_ = [1, 2, 3, 4, 3, 4, 5]
+mylist = [1, 2, 3, 4, 3, 4, 5]
+for number in mylist:
+    counted_number = mylist.count(number)
+    if counted_number > 1:
+        mylist.remove(number)
+print(mylist)
 
-del list_[2]
-list_.remove(4)
-list_.sort()
-print(list_)
+
 

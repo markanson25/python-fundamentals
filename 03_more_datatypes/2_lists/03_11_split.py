@@ -5,8 +5,14 @@ occurrences.
 
 '''
 
-sentence = input("Please enter a sentence: ")
+#  I'm not done with this one yet
+
+max_characters = -1
+sentence = input("Please enter a short paragraph: ")
 cut = sentence.split()
-print(cut)
-listcount = sentence.count(sentence[0])
-print(listcount)
+for character in cut:
+    counted = cut.count(character)
+    if counted > max_characters:
+        max_characters = counted
+        print(character, "was used", max_characters, "times.")
+

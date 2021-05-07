@@ -10,19 +10,16 @@ come back to this task after you have learned about loops)
 
 '''
 
-num1 = int(input("Please enter a number: "))
-num2 = int(input("Please enter a number: "))
-num3 = int(input("Please enter a number: "))
-num4 = int(input("Please enter a number: "))
-num5 = int(input("Please enter a number: "))
-num6 = int(input("Please enter a number: "))
-num7 = int(input("Please enter a number: "))
-num8 = int(input("Please enter a number: "))
-num9 = int(input("Please enter a number: "))
-num10 = int(input("Please enter a number: "))
-thelist = [num1, num2, num3, num4, num5, num6, num7, num8, num9, num10]
-for x in thelist:
-    total = sum(thelist)
-print(thelist)
-print(total)
+#  Thank you Michael!!!
+
+user_inputs = []
+max_number = -1000
+while len(user_inputs) < 10:
+    user_input = int(input("Please enter a number: "))
+    user_inputs.append(user_input)
+    if user_input > max_number:
+        max_number = user_input
+total = sum(user_inputs)
+print("The largest number in the list is:", max_number)
+print("The sum of the list is: ", total)
 
