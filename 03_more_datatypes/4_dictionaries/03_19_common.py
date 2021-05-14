@@ -11,3 +11,14 @@ dict_2 = {"a": 2, "c": 4 , "d": 2}
 result = {"a": 3, "b": 2, "c": 7 , "d": 2}
 
 '''
+
+# Initialize
+dict_1 = {"a": 1, "b": 2, "c": 3}
+dict_2 = {"a": 2, "c": 4, "d": 2}
+dict_3 = {**dict_1, **dict_2}
+
+for key, value in dict_3.items():
+    if key in dict_1 and key in dict_2:
+        sum(value)
+print(dict_3)
+
