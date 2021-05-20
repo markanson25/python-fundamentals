@@ -17,3 +17,9 @@ Another example: if input is 3, you will output
 Hint: Think of nested for loops
 
 '''
+
+star_iterations = 0
+user_number = int(input("Please enter a number: "))
+while star_iterations <= user_number:
+    print("* " * star_iterations)
+    star_iterations += 1
