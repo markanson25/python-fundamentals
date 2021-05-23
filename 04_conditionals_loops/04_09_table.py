@@ -9,3 +9,14 @@ Use a loop to print the following table to the console:
 
 '''
 
+print_number_count = 1
+number_string = ''
+number_count = 0
+while number_count < 50:
+    number_string += str(number_count) + " "
+    if print_number_count == 10:
+        print(number_string)
+        print_number_count = 0
+        number_string = ''
+    number_count += 1
+    print_number_count += 1
