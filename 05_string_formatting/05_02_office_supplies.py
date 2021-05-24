@@ -25,3 +25,6 @@ office = [
     {"full_name": "Creed Bratton", "item": "mung beans"},
     {"full_name": "Darryl Philbin", "item": "forklift"},
 ]
+
+print(office[0]["full_name"][8:13])
+

@@ -18,3 +18,11 @@ famous_quotes = [
     {"full_name": "Nathan Myhrvold", "quote": "Software is a gas; it expands to fill its container."},
     {"full_name": "Alan Bennett", "quote": "Standards are always out of date.  That’s what makes them standards."}
 ]
+
+user_input = int(input("Enter a number between 0 and 6: "))
+while user_input in range(0, 7):
+    print(f"\"{famous_quotes[user_input]['quote']}\"  -{famous_quotes[user_input]['full_name']}")
+    user_input = int(input("Enter a number between 0 and 6: "))
+print("That is not a number between 0 and 6.")
+
+
