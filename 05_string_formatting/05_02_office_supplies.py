@@ -26,5 +26,10 @@ office = [
     {"full_name": "Darryl Philbin", "item": "forklift"},
 ]
 
-print(office[0]["full_name"][8:13])
-
+quote_selection = 0
+for quote_selection in range(len(office)):
+    quote_selection_name = office[quote_selection]["full_name"].split()
+#     quote_selection_item = office[quote_selection]["item"]
+#     print(f"{quote_selection_name[1]}, {quote_selection_name[0]: <10} {quote_selection_item}")
+    quote_selection_last_name_length = len(quote_selection_name[1])
+    print(quote_selection_last_name_length)
