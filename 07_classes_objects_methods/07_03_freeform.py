@@ -14,6 +14,21 @@ Cars, animals, card games, sports teams, trees, people etc...
 
 '''
 
+
+
+class Gather_course_and_participant_info():
+
+    def __init__(self):
+        self.event_name = input("What event did you attend?: ")
+        self.event_name_list = []
+        self.event_name_list.append(self.event_name)
+
+    def store_user_input(self):
+        pass
+
+    def __str__(self):
+        return f"{self.event_name} was added to the list {self.event_name_list}!"
+
 class License_renewal_courses:
 
     def __init__(self, event_name, date, delivery):
@@ -22,7 +37,7 @@ class License_renewal_courses:
         self.delivery = delivery
 
     def __str__(self):
-        f"The License Renewal training '{self.event_name}' took place {self.date} and was delivered {self.delivery}."
+        return f"The License Renewal training '{self.event_name}' took place {self.date} and was delivered {self.delivery}."
 
 class Participants:
 
@@ -32,18 +47,14 @@ class Participants:
         self.email = email
 
     def __str__(self):
-        f" "
+        return f" "
 
-class Presenter:
+user_event = Gather_course_and_participant_info()
+print(user_event.__str__())
 
-    def __init__(self, full_name, contract_on_file, fee):
-        self.full_name = full_name
-        self.contract_on_file = contract_on_file
-            if self.contract_on_file == "Yes" or "yes"
-                contract_on_file = "is"
-            elif self.contract_on_file == "No" or "no"
-                contract_on_file = "is not"
-        self.fee = fee
 
-    def __str__(self):
-        f"{self.full_name} facilitated the event and charged {self.fee}.  The contract {self.contract_on_file} on file."
+# my_event = License_renewal_courses('Differention Strategies', '05/30/2021', 'On Demand')
+# my_participation = Participants('Mark', 'Anson', 'mark_anson@yahoo.com')
+# my_presenter = Presenter('Jacki Brickman', 'Yes', 2500)
+#
+# print(my_event.__str__(), my_participation.__str__(), my_presenter.__str__())
