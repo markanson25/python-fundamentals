@@ -14,20 +14,32 @@ Cars, animals, card games, sports teams, trees, people etc...
 
 '''
 
-
-
 class Gather_course_and_participant_info():
 
     def __init__(self):
-        self.event_name = input("What event did you attend?: ")
-        self.event_name_list = []
-        self.event_name_list.append(self.event_name)
+        self.event_dictionary = {
+                                 10001: 'Mental Health - Early Warning Signs and Suicide Prevention',
+                                 10002: 'Strategies to Support Multilingual Learners ',
+                                 10003: 'Differentiation Strategies',
+                                 10004: 'Teaching Reading'
+                                 }
 
-    def store_user_input(self):
-        pass
+    def user_input(self):
+        self.event_name = input("What event did you attend?: ")
+        if self.event_name not in self.event_dictionary.values():
+            self.event_name = input("Sorry, that event was not in our system.  Please enter another event: ")
+        return self.event_name
+
+    def lookup_dictionary_key(self, user_input):
+        self.user_dictionary_key = ''
+        for dictionary_key, dictionary_value in self.event_dictionary.items():
+            print(dictionary_key, dictionary_value)
+            if user_input == dictionary_value:
+                self.user_dictionary_key = dictionary_key
+        return self.user_dictionary_key
 
     def __str__(self):
-        return f"{self.event_name} was added to the list {self.event_name_list}!"
+        return f"{self.user_input()} is event '{self.lookup_dictionary_key(self.user_input)}'.!"
 
 class License_renewal_courses:
 
