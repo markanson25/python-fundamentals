@@ -14,7 +14,7 @@ Cars, animals, card games, sports teams, trees, people etc...
 
 '''
 
-class Gather_course_and_participant_info():
+class Initialize_data():
 
     def __init__(self):
         self.event_dictionary = {
@@ -23,50 +23,51 @@ class Gather_course_and_participant_info():
                                  10003: 'Differentiation Strategies',
                                  10004: 'Teaching Reading'
                                  }
+        self.event_fee = {10001: 15, 10002: 35, 10003: 25, 10004: 10}
+        self.participants = {20001: 'Julie Benson', 20002: 'Andrea Mortensen', 20003: 'Rachel Johnson'}
+        self.participant_event_attendance = {
+                                            20001: [10001, 10002, 10003],
+                                            20002: [10001, 10002, 10003, 10004],
+                                            20003: [10001, 10002]
+                                            }
 
-    def user_input(self):
+class Gather_user_info(Initialize_data):
+
+    def __init__(self):
+        super().__init__()
+
+    def user_name_input(self):
+        self.participant_name = input("What is your name?: ")
+        if self.participant_name not in self.participants.values():
+            new_participant_key = max(self.participants.keys()) + 1
+            new_participant_dict_entry = {new_participant_key: self.participant_name}
+            self.participants.update(new_participant_dict_entry)
+        return self.participant_name
+
+    def user_event_input(self):
         self.event_name = input("What event did you attend?: ")
         if self.event_name not in self.event_dictionary.values():
             self.event_name = input("Sorry, that event was not in our system.  Please enter another event: ")
         return self.event_name
 
-    def lookup_dictionary_key(self, user_input):
-        self.user_dictionary_key = ''
+    def lookup_event_dictionary_key(self):
+        self.user_dictionary_key = 0
         for dictionary_key, dictionary_value in self.event_dictionary.items():
-            print(dictionary_key, dictionary_value)
-            if user_input == dictionary_value:
+            if self.event_name == dictionary_value:
                 self.user_dictionary_key = dictionary_key
         return self.user_dictionary_key
 
-    def __str__(self):
-        return f"{self.user_input()} is event '{self.lookup_dictionary_key(self.user_input)}'.!"
-
-class License_renewal_courses:
-
-    def __init__(self, event_name, date, delivery):
-        self.event_name = event_name
-        self.date = date
-        self.delivery = delivery
+    def lookup_name_dictionary_key(self):
+        self.user_name_dictionary_key = 0
+        for dictionary_key, dictionary_value in self.participants.items():
+            if self.participant_name == dictionary_value:
+                self.user_name_dictionary_key = dictionary_key
+        return self.user_name_dictionary_key
 
     def __str__(self):
-        return f"The License Renewal training '{self.event_name}' took place {self.date} and was delivered {self.delivery}."
-
-class Participants:
-
-    def __init__(self, first_name, last_name, email):
-        self.first_name = first_name
-        self.last_name = last_name
-        self.email = email
-
-    def __str__(self):
-        return f" "
-
-user_event = Gather_course_and_participant_info()
-print(user_event.__str__())
+        return f"Hello, {self.user_name_input()}! You are participant number: {self.lookup_name_dictionary_key()}.  " \
+               f"{self.user_event_input()} is event '{self.lookup_event_dictionary_key()}'.!"
 
 
-# my_event = License_renewal_courses('Differention Strategies', '05/30/2021', 'On Demand')
-# my_participation = Participants('Mark', 'Anson', 'mark_anson@yahoo.com')
-# my_presenter = Presenter('Jacki Brickman', 'Yes', 2500)
-#
-# print(my_event.__str__(), my_participation.__str__(), my_presenter.__str__())
+user_event = Gather_user_info()
+print(Gather_user_info.__str__(Gather_user_info()))
