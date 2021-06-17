@@ -18,23 +18,30 @@ class Initialize_data():
 
     def __init__(self):
         self.event_dictionary = {
-                                 10001: 'Mental Health - Early Warning Signs and Suicide Prevention',
-                                 10002: 'Strategies to Support Multilingual Learners ',
-                                 10003: 'Differentiation Strategies',
-                                 10004: 'Teaching Reading'
+                                    10001: 'Mental Health - Early Warning Signs and Suicide Prevention',
+                                    10002: 'Strategies to Support Multilingual Learners ',
+                                    10003: 'Differentiation Strategies',
+                                    10004: 'Teaching Reading'
                                  }
         self.event_fee = {10001: 15, 10002: 35, 10003: 25, 10004: 10}
         self.participants = {20001: 'Julie Benson', 20002: 'Andrea Mortensen', 20003: 'Rachel Johnson'}
         self.participant_event_attendance = {
-                                            20001: [10001, 10002, 10003],
-                                            20002: [10001, 10002, 10003, 10004],
-                                            20003: [10001, 10002]
+                                                20001: [10001, 10002, 10003],
+                                                20002: [10001, 10002, 10003, 10004],
+                                                20003: [10001, 10002]
                                             }
+        self.current_user = 0
 
 class Gather_user_info(Initialize_data):
 
+    def start_program(self):
+        print(f"Hello, {self.user_name_input()}! You are participant number: {self.lookup_name_dictionary_key()}."
+              f"  {self.user_event_input()} is event '{self.lookup_event_dictionary_key()}'.!"
+              f"  Your total fee is {self.user_event_fee_lookup()}.")
+
     def __init__(self):
         super().__init__()
+        self.start_program()
 
     def user_name_input(self):
         self.participant_name = input("What is your name?: ")
@@ -42,12 +49,14 @@ class Gather_user_info(Initialize_data):
             new_participant_key = max(self.participants.keys()) + 1
             new_participant_dict_entry = {new_participant_key: self.participant_name}
             self.participants.update(new_participant_dict_entry)
+            self.current_user = new_participant_key
         return self.participant_name
 
     def user_event_input(self):
         self.event_name = input("What event did you attend?: ")
         if self.event_name not in self.event_dictionary.values():
-            self.event_name = input("Sorry, that event was not in our system.  Please enter another event: ")
+            while self.event_name not in self.event_dictionary.values():
+                self.event_name = input("Sorry, that event was not in our system.  Please enter another event: ")
         return self.event_name
 
     def lookup_event_dictionary_key(self):
@@ -64,10 +73,31 @@ class Gather_user_info(Initialize_data):
                 self.user_name_dictionary_key = dictionary_key
         return self.user_name_dictionary_key
 
-    def __str__(self):
-        return f"Hello, {self.user_name_input()}! You are participant number: {self.lookup_name_dictionary_key()}.  " \
-               f"{self.user_event_input()} is event '{self.lookup_event_dictionary_key()}'.!"
+    def update_participant_event_attendance(self):
+        if self.user_name_dictionary_key not in self.participant_event_attendance.keys():
+            new_participant_in_event = {self.user_name_dictionary_key: [self.user_dictionary_key]}
+            self.participant_event_attendance.update(new_participant_in_event)
+        self.user_event_fee_lookup()
+
+    def user_event_fee_lookup(self):
+        user_event_name_list = []
+        self.total = 0
+        user_dictionary_key = min(self.participants)
+        if user_dictionary_key != self.user_name_dictionary_key:
+            while user_dictionary_key in self.participant_event_attendance.keys() != self.user_name_dictionary_key:
+                user_dictionary_key += 1
+        elif user_dictionary_key == self.user_name_dictionary_key:
+            for user_dict_key, user_dict_values in self.participant_event_attendance.items():
+                if user_dict_key == self.user_name_dictionary_key:
+                    user_events = user_dict_values
+                    for event_key in user_events:
+                        for event_fee_key, event_fee in self.event_fee.items():
+                            if event_fee_key == event_key:
+                                self.total += event_fee
+        return self.total
 
 
-user_event = Gather_user_info()
-print(Gather_user_info.__str__(Gather_user_info()))
+def main():
+    user_event = Gather_user_info()
+if __name__=="__main__":
+    main()
