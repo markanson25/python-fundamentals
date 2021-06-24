@@ -7,18 +7,19 @@ The script should keep prompting the user until they enter an integer.
 
 '''
 
-class IntegerCheck(Exception):
+integer_check = False
+while integer_check == False:
+    try:
+        user_input = input("Please enter an integer: ")
+        user_input_int = int(user_input)
+        user_input_float = float(user_input)
+        if user_input_float % user_input_int != 0:
+            raise ValueError
+        else:
+            print("Good job!")
+            integer_check = True
 
-    def check_for_integers(self, check_user_input):
-        self.check_user_input = check_user_input
-        self.user_input_type = type(user_input)
-        return print(f"{self.user_input_type} isn't an integer, it's a {self.user_input_type}!")
+    except:
+        print("Sorry, that was not an integer.")
 
-user_input = input("Please enter an integer: ")
-try:
-    if type(user_input) == int:
-        print("Good job!")
-    else:
-        raise ValueError
-except ValueError:
-    raise IntegerCheck(user_input)
+

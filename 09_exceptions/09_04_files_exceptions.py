@@ -11,7 +11,7 @@ You have a folder containing three text files of books from Project Gutenberg:
 
 2) Open crime_and_punishment.txt and overwrite the whole content with an empty string
 
-3) Loop over all three files and print out only the first character each. Your program
+3) Loop over all three files and print out only the first character of each. Your program
     should NEVER terminate with a Traceback.
 
     a) Which Exception can you expect to encounter? Why?
@@ -22,4 +22,9 @@ You have a folder containing three text files of books from Project Gutenberg:
 BONUS CHALLENGE: write a custom Exception that inherits from Exception and raise it if the
 first 100 characters of any of the files contain the string "Prince".
 
+UnicodeDecodeError
 '''
+
+with open("C:/Users/mark_/OneDrive/Documents/CodingNomads/Labs/09_exceptions/Books/war_and_peace.txt", "r", errors='ignore') as war_and_peace_text:
+    war_and_peace = war_and_peace_text.readlines()
+    print(war_and_peace)
