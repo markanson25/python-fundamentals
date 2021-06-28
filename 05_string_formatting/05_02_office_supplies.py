@@ -32,6 +32,8 @@ for quote_selection in range(len(office)):
     quote_selection_name = office[quote_selection]["full_name"].split()
     quote_selection_name_length = len(office[quote_selection]["full_name"])
     quote_selection_item = office[quote_selection]["item"]
-    print(f"{quote_selection_name[1].upper()}, {quote_selection_name[0]} {quote_selection_item: >{40-quote_selection_name_length}}")
-    print(quote_selection_name_length)
+    # print(f"{quote_selection_name[1].upper()}, {quote_selection_name[0]} {quote_selection_item: >{40-quote_selection_name_length}}")
+    # print(quote_selection_name_length)
+    name = f"{quote_selection_name[1].upper()}, {quote_selection_name[0].capitalize()}"
+    print(f"{name: <20} {quote_selection_item}")
 

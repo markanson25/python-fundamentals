@@ -22,4 +22,3 @@ while len(user_inputs) < 10:
 total = sum(user_inputs)
 print("The largest number in the list is:", max_number)
 print("The sum of the list is: ", total)
-

@@ -9,10 +9,12 @@ occurrences.
 
 max_characters = -1
 sentence = input("Please enter a short paragraph: ")
-cut = sentence.split()
-for character in cut:
-    counted = cut.count(character)
+split_sentence = sentence.split()
+print(split_sentence)
+for character in split_sentence:
+    counted = split_sentence.count(character)
     if counted > max_characters:
         max_characters = counted
-        print(character, "was used", max_characters, "times.")
+        word_used_most = character
+print(word_used_most, "was used", max_characters, "times.")
 
